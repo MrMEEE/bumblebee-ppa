@@ -1,0 +1,14 @@
+Source: bumblebee-ui
+Section: misc
+Priority: extra
+Maintainer: Martin Juhl <mj@casalogic.dk>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+Homepage: https://github.com/MrMEEE/bumblebee-ui
+#Vcs-Git: git://git.debian.org/collab-maint/bumblebee.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/bumblebee.git;a=summary
+
+Package: bumblebee-ui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, bumblebee, python-appindicator
+Description: bumblebee-ui is an graphical interface for bumblebee

@@ -1,0 +1,11 @@
+libjpeg-turbo32 (1.1.1-1.1~lucid) lucid; urgency=low
+
+  * Fixed Dependencies...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 23 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo32 (1.1.1-1~lucid) lucid; urgency=low
+
+  * Initial release 
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200

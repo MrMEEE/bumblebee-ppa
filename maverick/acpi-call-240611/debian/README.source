@@ -1,0 +1,2 @@
+This package uses dpatch for patch management, for more information see
+the file /usr/share/doc/dpatch/README.source.gz in the dpatch package.

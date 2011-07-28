@@ -1,0 +1,8 @@
+PACKAGE_NAME="acpi-call"
+PACKAGE_VERSION="__VERSION__"
+CLEAN="make clean"
+BUILT_MODULE_NAME[0]="acpi_call"
+DEST_MODULE_NAME[0]="acpi_call"
+MAKE[0]="make IGNORE_CC_MISMATCH=1 KDIR=$kernel_source_dir PWD=$dkms_tree/acpi-call/__VERSION__/build"
+DEST_MODULE_LOCATION[0]="/updates/dkms/"
+AUTOINSTALL="yes"

@@ -1,0 +1,15 @@
+Source: bumblebee
+Section: misc
+Priority: extra
+Maintainer: Martin Juhl <mj@casalogic.dk>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/bumblebee.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/bumblebee.git;a=summary
+
+Package: bumblebee
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, nvidia-current, acpi-call-dkms, virtualgl
+Description: bumblebee is Optimus support for Linux, with real offloading,
+ and not switchable graphics..

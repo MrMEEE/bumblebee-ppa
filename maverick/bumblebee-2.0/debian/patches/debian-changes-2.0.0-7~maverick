@@ -1,0 +1,39 @@
+Description: Upstream changes introduced in version 2.0.0-7~maverick
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ bumblebee (2.0.0-7~maverick) maverick; urgency=low
+ .
+   * Fixed the Configuration script
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- bumblebee-2.0.0.orig/install-files/bumblebee-configuration
++++ bumblebee-2.0.0/install-files/bumblebee-configuration
+@@ -254,9 +254,9 @@ done
+ 
+ if [ "$CONFIGMODE" = "MANUAL" ]; then
+ if [ `${LSPCI} |grep VGA |wc -l` -eq 2 ]; then
+-   NVIDIABUSID=`echo "PCI:"\`${LSPCI} |grep VGA |grep nVidia |cut -f1 -d:\`":"\`${LSPCI} |grep VGA |grep nVidia |cut -f2 -d: |cut -f1 -d.\`":"\`${LSPCI} |grep VGA |grep nV
++   NVIDIABUSID=`${LSPCI} | grep VGA | grep nVidia | awk '{ print "PCI:"$1 }' | sed s/\\\./:/g`
+ elif [ `${LSPCI} |grep 3D |wc -l` -eq 1 ]; then
+-   NVIDIABUSID=`echo "PCI:"\`${LSPCI} |grep 3D |grep nVidia |cut -f1 -d:\`":"\`${LSPCI} |grep 3D |grep nVidia |cut -f2 -d: |cut -f1 -d.\`":"\`${LSPCI} |grep 3D |grep nVidi
++   NVIDIABUSID=`${LSPCI} | grep 3D  | grep nVidia | awk '{ print "PCI:"$1 }' | sed s/\\\./:/g`
+ else
+  whiptail --msgbox " The BusID of the nVidia card can't be determined.\n\
+ You must correct this manually in /etc/X11/xorg.conf.nvidia.\n\

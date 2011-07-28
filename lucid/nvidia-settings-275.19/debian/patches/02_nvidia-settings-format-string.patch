@@ -1,0 +1,88 @@
+Index: nvidia-settings-1.0/src/query-assign.c
+===================================================================
+--- nvidia-settings-1.0/src/query-assign.c
++++ nvidia-settings-1.0/src/query-assign.c	2009-07-17 04:23:15.528973916 +0300
+@@ -755,7 +755,7 @@
+     for (i = 0; targetTypeTable[i].name; i++) {
+         if (valid.permissions & targetTypeTable[i].permission_bit) {
+             if (n > 0) c += sprintf(c, ", ");
+-            c += sprintf(c, targetTypeTable[i].name);
++            c += sprintf(c, "%s", targetTypeTable[i].name);
+             n++;
+         }
+     }
+Index: nvidia-settings-1.0/src/gtk+-2.x/ctkdisplayconfig.c
+===================================================================
+--- nvidia-settings-1.0/src/gtk+-2.x/ctkdisplayconfig.c
++++ nvidia-settings-1.0/src/gtk+-2.x/ctkdisplayconfig.c	2009-07-17 04:28:06.217972586 +0300
+@@ -653,7 +653,7 @@
+                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                  GTK_MESSAGE_WARNING,
+                  GTK_BUTTONS_NONE,
+-                 msg);
++                 "%s", msg);
+             
+             gtk_dialog_add_buttons(GTK_DIALOG(dlg),
+                                    "Truncate MetaModes",
+@@ -4220,7 +4220,7 @@
+                      GTK_DIALOG_DESTROY_WITH_PARENT,
+                      GTK_MESSAGE_WARNING,
+                      GTK_BUTTONS_OK,
+-                     msg);
++                     "%s", msg);
+                 
+                 gtk_dialog_run(GTK_DIALOG(dlg));
+                 gtk_widget_destroy(dlg);
+@@ -5850,7 +5850,7 @@
+                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                  GTK_MESSAGE_WARNING,
+                  GTK_BUTTONS_YES_NO,
+-                 msg);
++                 "%s", msg);
+         } else {
+             msg = g_strdup_printf("Failed to set MetaMode (%d) '%s' "
+                                   "(Mode %dx%d, id: %d) on X screen %d.",
+@@ -5862,7 +5862,7 @@
+                  GTK_DIALOG_DESTROY_WITH_PARENT,
+                  GTK_MESSAGE_WARNING,
+                  GTK_BUTTONS_OK,
+-                 msg);
++                 "%s", msg);
+         }
+ 
+         result = gtk_dialog_run(GTK_DIALOG(dlg));
+Index: nvidia-settings-1.0/src/gtk+-2.x/ctkslimm.c
+===================================================================
+--- nvidia-settings-1.0/src/gtk+-2.x/ctkslimm.c
++++ nvidia-settings-1.0/src/gtk+-2.x/ctkslimm.c	2009-07-17 04:31:00.462973003 +0300
+@@ -353,7 +353,7 @@
+              GTK_DIALOG_DESTROY_WITH_PARENT,
+              GTK_MESSAGE_WARNING,
+              GTK_BUTTONS_OK,
+-             err_msg);
++             "%s", err_msg);
+             
+         gtk_dialog_run(GTK_DIALOG(dlg));
+         gtk_widget_destroy(dlg);
+Index: nvidia-settings-1.0/src/gtk+-2.x/ctkutils.c
+===================================================================
+--- nvidia-settings-1.0/src/gtk+-2.x/ctkutils.c
++++ nvidia-settings-1.0/src/gtk+-2.x/ctkutils.c	2009-07-17 04:26:44.069972888 +0300
+@@ -106,7 +106,7 @@
+              GTK_DIALOG_DESTROY_WITH_PARENT,
+              GTK_MESSAGE_ERROR,
+              GTK_BUTTONS_OK,
+-             msg);
++             "%s", msg);
+             gtk_dialog_run(GTK_DIALOG(dlg));
+             gtk_widget_destroy(dlg);
+         }
+@@ -134,7 +134,7 @@
+              GTK_DIALOG_DESTROY_WITH_PARENT,
+              GTK_MESSAGE_WARNING,
+              GTK_BUTTONS_OK,
+-             msg);
++             "%s", msg);
+             gtk_dialog_run(GTK_DIALOG(dlg));
+             gtk_widget_destroy(dlg);
+         }

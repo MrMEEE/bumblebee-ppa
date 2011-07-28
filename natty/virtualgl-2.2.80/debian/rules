@@ -1,0 +1,83 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ 
+
+ARCH := $(shell uname -m)
+
+override_dh_auto_configure:
+ifeq ($(ARCH),x86_64)
+		mkdir build32 && cd build32 && CFLAGS=-m32 CXXFLAGS=-m32 LDFLAGS=-m32 cmake -G"Unix Makefiles" -DOPENGL_gl_LIBRARY=/usr/lib32/libGL.so -DX11_X11_LIB=/usr/lib32/libX11.so -DX11_Xext_LIB=/usr/lib32/libXext.so -DCMAKE_INSTALL_PREFIX=/usr ../
+endif
+		cmake -G "Unix Makefiles" -DTJPEG_LIBRARY=/usr/lib/libturbojpeg.a -DTJPEG_INCLUDE_DIR=/usr/include -DCMAKE_INSTALL_PREFIX=/usr
+override_dh_auto_install:
+		make
+ifeq ($(ARCH),x86_64)
+		cd build32 && make && make install DESTDIR=../debian/virtualgl
+		mv debian/virtualgl/usr/lib debian/virtualgl/usr/lib32
+endif
+		make install DESTDIR=debian/virtualgl
+		mkdir -p debian/virtualgl/opt/VirtualGL/bin
+		mv debian/virtualgl/usr/bin/tcbench debian/virtualgl/opt/VirtualGL/bin/
+		mv debian/virtualgl/usr/bin/nettest debian/virtualgl/opt/VirtualGL/bin/
+		mv debian/virtualgl/usr/bin/cpustat debian/virtualgl/opt/VirtualGL/bin/
+		mv debian/virtualgl/usr/bin/glxinfo debian/virtualgl/opt/VirtualGL/bin/vglglxinfo
+		mv debian/virtualgl/usr/bin/glxspheres debian/virtualgl/opt/VirtualGL/bin/		
+		for i in debian/virtualgl/opt/VirtualGL/bin/*; do ln -fs $$i debian/virtualgl/usr/bin/; done
+		rm -rf debian/virtualgl/usr/fakelib
+		mkdir -p debian/virtualgl/opt/VirtualGL/fakelib
+ifeq ($(ARCH),x86_64)
+		mkdir -p debian/virtualgl/opt/VirtualGL/fakelib/64
+		ln -fs /usr/lib32/librrfaker.so debian/virtualgl/opt/VirtualGL/fakelib/libGL.so
+		ln -fs /usr/lib/librrfaker.so debian/virtualgl/opt/VirtualGL/fakelib/64/libGL.so
+else
+		ln -fs /usr/lib/librrfaker.so debian/virtualgl/opt/VirtualGL/fakelib/libGL.so  
+endif
+		mkdir -p debian/virtualgl/opt/VirtualGL/include
+		ln -fs /usr/include/rrtransport.h debian/virtualgl/opt/VirtualGL/include/rrtransport.h
+		ln -fs /usr/include/rr.h debian/virtualgl/opt/VirtualGL/include/rr.h
+		rm -rf debian/virtualgl/usr/doc
+		ln -fs /usr/share/doc/VirtualGL-2.2.80 debian/virtualgl/opt/VirtualGL/doc
+		mkdir -p debian/virtualgl/usr/share/doc/VirtualGL-2.2.80
+		install -m 644 fltk/COPYING debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-FLTK.txt
+		install -m 644 putty/LICENCE debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-PuTTY.txt
+		install -m 644 x11windows/xauth.license debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-xauth.txt
+		install -m 644 LGPL.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 LICENSE.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 ChangeLog.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/index.html debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/*.png debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/  
+		install -m 644 doc/*.gif debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/*.css debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		rm -rf debian/virtualgl/usr/bin/vglglxinfo
+		rm -rf debian/virtualgl/usr/bin/glxspheres
+		rm -rf debian/virtualgl/usr/bin/cpustat
+		rm -rf debian/virtualgl/usr/bin/nettest
+		rm -rf debian/virtualgl/usr/bin/tcbench
+		ln -fs /opt/VirtualGL/bin/vglvglxinfo debian/virtualgl/usr/bin/vglvglxinfo
+		ln -fs /opt/VirtualGL/bin/glxspheres debian/virtualgl/usr/bin/glxspheres
+		ln -fs /opt/VirtualGL/bin/cpustat debian/virtualgl/usr/bin/cpustat
+		ln -fs /opt/VirtualGL/bin/nettest debian/virtualgl/usr/bin/nettest
+		ln -fs /opt/VirtualGL/bin/tcbench debian/virtualgl/usr/bin/tcbench
+		ln -fs /opt/VirtualGL/bin/vglglxinfo debian/virtualgl/usr/bin/vglglxinfo
+		chown -Rh root:root debian/virtualgl/*
+override_dh_installdocs:
+		install -m 644 fltk/COPYING debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-FLTK.txt
+		install -m 644 putty/LICENCE debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-PuTTY.txt
+		install -m 644 x11windows/xauth.license debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/LICENSE-xauth.txt
+		install -m 644 LGPL.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 LICENSE.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 ChangeLog.txt debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/index.html debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/*.png debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/     
+		install -m 644 doc/*.gif debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/
+		install -m 644 doc/*.css debian/virtualgl/usr/share/doc/VirtualGL-2.2.80/

@@ -1,0 +1,9 @@
+--- nvidia-graphics-drivers-275.09.07/debian/dkms.conf	2011-07-15 16:02:14.000000000 +0000
++++ nvidia-graphics-drivers-275.19/debian/dkms.conf	2011-07-15 16:02:17.000000000 +0000
+@@ -1,5 +1,5 @@
+ PACKAGE_NAME="nvidia-current"
+-PACKAGE_VERSION="275.09.07"
++PACKAGE_VERSION="275.19"
+ CLEAN="make clean"
+ BUILT_MODULE_NAME[0]="nvidia"
+ DEST_MODULE_NAME[0]="nvidia-current"

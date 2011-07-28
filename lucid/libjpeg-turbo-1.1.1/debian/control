@@ -1,0 +1,15 @@
+Source: libjpeg-turbo
+Section: libs
+Priority: extra
+Maintainer: Martin Juhl <mj@casalogic.dk>
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev, nasm
+Standards-Version: 3.9.1
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/libjpeg-turbo.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/libjpeg-turbo.git;a=summary
+
+Package: libjpeg-turbo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: libjpeg-turbo
+Conflicts: libjpeg-progs

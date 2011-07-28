@@ -1,0 +1,31 @@
+libjpeg-turbo (1.1.1-4~natty) natty; urgency=high
+
+  * Added Package Description
+  * Changed dependencies/conflicts
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo (1.1.1-4) natty; urgency=high
+
+  * Added Package Description
+  * Changed dependencies/conflicts
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo (1.1.1-3) natty; urgency=high
+
+  * Fixed compile flags...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo (1.1.1-2) natty; urgency=low
+
+  * Initial release - Natty upload
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo (1.1.1-1) natty; urgency=low
+
+  * Initial release 
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200

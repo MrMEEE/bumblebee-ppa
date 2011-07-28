@@ -1,0 +1,105 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+ARCH := $(shell uname -m)
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+	# Add here commands to compile the package.
+	# --- end custom part for compiling
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	# Add here commands to clean up after the build process.
+	make clean || true
+	# --- end custom part for cleaning up
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Add here commands to install the package
+	# The DESTDIR Has To Be Exactly  debian/<nameOfPackage>
+	mkdir -p debian/bumblebee/etc/sudoers.d/
+	mkdir -p debian/bumblebee/etc/X11/
+	mkdir -p debian/bumblebee/etc/init.d/
+	mkdir -p debian/bumblebee/etc/modprobe.d/
+	mkdir -p debian/bumblebee/etc/pm/power.d/
+	mkdir -p debian/bumblebee/etc/default/
+	mkdir -p debian/bumblebee/usr/share/doc/bumblebee/
+	mkdir -p debian/bumblebee/etc/bash_completion.d/
+	mkdir -p debian/bumblebee/usr/bin/
+	cp install-files/bumblebee.sudo	debian/bumblebee/etc/sudoers.d/bumblebee
+	cp install-files/documentation debian/bumblebee/usr/share/doc/bumblebee
+	cp README debian/bumblebee/usr/share/doc/bumblebee
+	cp install-files/ubuntu/bumblebee-disablecard.* debian/bumblebee/usr/share/doc/bumblebee
+	cp install-files/ubuntu/bumblebee-enablecard.* debian/bumblebee/usr/share/doc/bumblebee
+	cp install-files/bumblebee-submitsystem debian/bumblebee/usr/bin/
+	cp install-files/bumblebee-bugreport debian/bumblebee/usr/bin/
+	cp install-files/bumblebee-configuration debian/bumblebee/usr/bin/
+	cp install-files/bumblebee.script.ubuntu debian/bumblebee/etc/init.d/bumblebee
+	cp install-files/bumblebee-disablecard-on-powerup debian/bumblebee/usr/bin/
+	cp install-files/optirun.bash_completion debian/bumblebee/etc/bash_completion.d/optirun
+	ln -s /usr/bin/bumblebee-disablecard-on-powerup debian/bumblebee/etc/pm/power.d/
+	cp install-files/bumblebee.default debian/bumblebee/etc/default/bumblebee
+	echo "Bumblebee Version 2.2.0" >> debian/bumblebee/etc/bumblebee
+	cp install-files/optirun.ubuntu debian/bumblebee/usr/bin/optirun
+	cp install-files/optirun.bash_completion debian/bumblebee/etc/bash_completion.d/optirun
+	chmod +x debian/bumblebee/usr/bin/*
+ifeq ($(ARCH),x86_64) 
+	ln -s /usr/bin/optirun debian/bumblebee/usr/bin/optirun32
+	ln -s /usr/bin/optirun debian/bumblebee/usr/bin/optirun64
+endif
+	cp install-files/xorg.conf.nvidia debian/bumblebee/etc/X11/
+	chmod 0440 debian/bumblebee/etc/sudoers.d/bumblebee
+	chmod +x debian/bumblebee/etc/init.d/bumblebee
+	
+	# --- end custom part for installing
+
+# Build architecture-independent files here.
+binary-indep: build install
+	# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+#	dh_installdebconf
+	dh_installdocs
+	dh_installexamples
+	dh_installmenu
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+	dh_installcron
+	dh_installman
+	dh_installinfo
+#	dh_undocumented
+	dh_installchangelogs
+#	dh_link
+#	dh_strip
+#	dh_compress
+#	dh_fixperms
+#	dh_makeshlibs
+	dh_installdeb
+#	dh_perl
+#	dh_shlibdeps
+	dh_gencontrol
+#	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

@@ -1,0 +1,126 @@
+Description: Upstream changes introduced in version 2.0.0-8~maverick
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ bumblebee (2.0.0-8~maverick) maverick; urgency=high
+ .
+   * More fixes for the configuration script.
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- /dev/null
++++ bumblebee-2.0.0/install-files/bumblebee-enablecard.template
+@@ -0,0 +1,30 @@
++#!/bin/bash
++# This script should contain the command(s) necessary to switch on the
++# nVidia card.
++# This is a template script.
++#
++# Please note that the acpi_call module is need for these operations:
++# http://linux-hybrid-graphics.blogspot.com/2010/07/using-acpicall-module-to-switch-onoff.html
++
++#modprobe acpi_call
++#if ! lsmod | grep -q acpi_call; then
++#    echo "Error: acpi_call module not loaded"
++#    exit
++#fi
++
++#acpi_call () {
++#    echo "$*" > /proc/acpi/call
++#    result=$(cat /proc/acpi/call)
++#    case "$result" in
++#     Error*)
++#      echo "Enabling nVidia card failed ($result)."
++#      ;;
++#     *)
++#      echo "Enabling nVidia card succeeded."
++#     ;;
++#    esac
++#}
++
++#INSERTPOWERON
++
++#modprobe nvidia-current
+--- /dev/null
++++ bumblebee-2.0.0/install-files/bumblebee-disablecard.template
+@@ -0,0 +1,34 @@
++#!/bin/bash
++# This script should contain the command(s) necessary to switch off the
++# nVidia card.
++# This is a template script.
++#
++# Please note that the acpi_call module is need for these operations:
++# http://linux-hybrid-graphics.blogspot.com/2010/07/using-acpicall-module-to-switch-onoff.html
++
++#rmmod nvidia
++#if lsmod | grep -q nvidia; then
++# echo "Error: could not unload nvidia module, leaving card turned on"
++# exit
++#fi
++
++#modprobe acpi_call
++#if ! lsmod | grep -q acpi_call; then
++#    echo "Error: acpi_call module not loaded"
++#    exit
++#fi
++
++#acpi_call () {
++#    echo "$*" > /proc/acpi/call
++#    result=$(cat /proc/acpi/call)
++#    case "$result" in
++#     Error*)
++#      echo "Disabling nVidia card failed ($result)."
++#      ;;
++#     *)
++#      echo "Disabling nVidia card succeeded."
++#     ;;
++#    esac
++#}
++
++#INSERTPOWEROFF
+--- bumblebee-2.0.0.orig/install-files/bumblebee-configuration
++++ bumblebee-2.0.0/install-files/bumblebee-configuration
+@@ -282,8 +282,8 @@ if [ -f /usr/local/bin/bumblebee-disable
+ fi
+ fi
+ 
+-if [ "$CONFIGMODE" != "MANUAL" ]; then
+-if [ "$POWERON" != "UNDEFINED" ]; then
++if [ $CONFIGMODE != "MANUAL" ]; then
++if [ $POWERON != "UNAVAILABLE" ]; then
+  echo $POWERON | xxd -r -p > /usr/local/bin/bumblebee-enablecard
+  echo $POWEROFF | xxd -r -p > /usr/local/bin/bumblebee-disablecard
+ else
+@@ -296,7 +296,7 @@ fi
+ fi
+  if [ ! -f /usr/local/bin/bumblebee-enablecard ]; then
+   # Not installed
+-  cp /usr/share/doc/bumblebee/bumblebee-enablecard.template.ubuntu /usr/local/bin/
++  cp /usr/share/doc/bumblebee/bumblebee-enablecard.template.ubuntu /usr/local/bin/bumblebee-enablecard
+  else
+   # Already Exists
+   echo
+@@ -305,7 +305,7 @@ fi
+  fi
+  if [ ! -f /usr/local/bin/bumblebee-disablecard ]; then
+   # Not installed
+-  cp /usr/share/doc/bumblebee/bumblebee-disablecard.template.ubuntu /usr/local/bin/
++  cp /usr/share/doc/bumblebee/bumblebee-disablecard.template.ubuntu /usr/local/bin/bumblebee-disablecard
+  else
+   # Already Exists
+   echo

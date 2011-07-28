@@ -1,0 +1,91 @@
+diff -Nurp nvidia-settings-190.53.orig/src/gtk+-2.x/ctkdisplayconfig-utils.c nvidia-settings-190.53/src/gtk+-2.x/ctkdisplayconfig-utils.c
+--- nvidia-settings-190.53.orig/src/gtk+-2.x/ctkdisplayconfig-utils.c	2009-12-09 06:18:39.000000000 +0100
++++ nvidia-settings-190.53/src/gtk+-2.x/ctkdisplayconfig-utils.c	2009-12-30 15:04:53.089702717 +0100
+@@ -2762,6 +2762,77 @@ static void update_banner(XConfigPtr con
+     
+ } /* update_banner() */
+ 
++/** ubuntu save_xconfig_file() ******************************
++ *
++ * Calls Screen Resolution Extra (which uses PolicyKit) to save
++ * the X config file text from buf into a file called filename.
++ * If the filename already exists, a backup file named
++ * 'filename.backup' is created.
++ *
++ **/
++
++static int ubuntu_save_xconfig_file(SaveXConfDlg *dlg,
++                             gchar *filename, char *buf, mode_t mode)
++{
++    gchar *backup_filename = NULL;
++    int temp_fd;
++    gchar *err_msg = NULL;
++
++    int ret = 0;
++    gchar *temp_filename;
++    gchar *command;
++    gboolean polkit_status;
++    int status;
++    char *nvidia_polkit = "/usr/share/screen-resolution-extra/nvidia-polkit.py";
++
++    if (!buf || !filename) goto done;
++
++    backup_filename = g_strdup_printf("%s.backup", filename);
++    
++    /* Write out the X config file to a temporary file */
++    temp_filename = g_strdup_printf("/tmp/nvidia-settings.XXXXXX");
++    temp_fd = mkstemp(temp_filename);
++    write(temp_fd, buf, strlen(buf));
++    close(temp_fd);
++
++    /* Backup the the X config file (if any) and write out the X config
++     * file from the temporary file
++     */
++    command = g_strconcat("python ",
++                          nvidia_polkit,
++                          " --write-from=",
++                          temp_filename,
++                          " --backup-to=",
++                          backup_filename,
++                          NULL);
++    polkit_status = (g_spawn_command_line_sync(command, NULL, NULL, &status, NULL) && status == 0);
++    g_free(command);
++    
++    /* Remove the temporary file */
++    unlink(temp_filename);
++    g_free(temp_filename);
++    
++    if (!polkit_status) {
++        err_msg = g_strdup_printf("Unable to open X config file '%s' for writing.",
++                                  filename);
++        goto done;
++    }
++
++    ret = 1;
++    
++ done:
++    /* Display any errors that might have occured */
++    if (err_msg) {
++        ctk_display_error_msg(ctk_get_parent_window(GTK_WIDGET(dlg->parent)),
++                              err_msg);
++        g_free(err_msg);
++    }
++
++    g_free(backup_filename);
++    return ret;
++    
++} /* save_xconfig_file() */
++
+ 
+ 
+ /** save_xconfig_file() **********************************************
+@@ -2782,6 +2853,9 @@ static int save_xconfig_file(SaveXConfDl
+ 
+     int ret = 0;
+ 
++    ret = ubuntu_save_xconfig_file(dlg, filename, buf, mode);
++    
++    return ret;
+ 
+     if (!buf || !filename) goto done;
+ 

@@ -1,0 +1,40 @@
+Description: Upstream changes introduced in version 0.9-1~oneiricubuntu4
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ bumblebee-ui (0.9-1~oneiricubuntu4) oneiric; urgency=low
+ .
+   * Fix for issue #1.. autocreate /home/user/.local/share/applications if it doesn't exist..
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- bumblebee-ui-0.9.orig/app/AppSettings.py
++++ bumblebee-ui-0.9/app/AppSettings.py
+@@ -42,6 +42,12 @@ if os.path.exists(Config.ui_config_file_
+ 	print "Using configuration file: " + Config.ui_config_file_path
+ else:
+         print "Configuration File does not exist, creating.."
++        configdir = os.path.dirname(Config.ui_config_file_directory)
++        try:
++        	os.stat(configdir)
++        except:
++		os.mkdir(configdir)
++                
+         file = open(Config.ui_config_file_path, 'w')
+         file.write("[Bumblebee UI]\n")
+         file.write("preferred_app = []\n")

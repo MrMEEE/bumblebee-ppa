@@ -1,0 +1,20 @@
+Source: acpi-call
+Section: kernel
+Priority: optional
+Maintainer: Martin Juhl <mj@casalogic.dk>
+Build-Depends: debhelper
+Build-Depends-Indep: bzip2
+Standards-Version: 3.9.1
+
+Package: acpi-call-source
+Architecture: all
+Depends: debhelper (>= 5), module-assistant, ${misc:Depends}
+Suggests: sysfsutils
+Description: Acpi-call kernel module
+ Acpi-call kernel module for enabling/disabling graphics cards.
+
+Package: acpi-call-dkms
+Architecture: all
+Depends: dkms (>= 1.95), ${misc:Depends}
+Description: Acpi-call kernel module
+ Acpi-call kernel module for enabling/disabling graphics cards.

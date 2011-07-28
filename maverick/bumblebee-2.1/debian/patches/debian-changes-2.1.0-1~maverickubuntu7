@@ -1,0 +1,43 @@
+Description: Upstream changes introduced in version 2.1.0-1~maverickubuntu7
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ bumblebee (2.1.0-1~maverickubuntu7) maverick; urgency=high
+ .
+   * Based on git-changes v. 1.6.71..
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- bumblebee-2.1.0.orig/install-files/bumblebee-configuration
++++ bumblebee-2.1.0/install-files/bumblebee-configuration
+@@ -548,14 +548,13 @@ fi
+ if [ "$DISTRO" == "UBUNTU" ] ; then
+ 	gpasswd -a `env |grep SUDO_USER |cut -f2 -d=` bumblebee
+ fi
+-if [ "$DISTRO" == "OPENSUSE" ; then
++if [ "$DISTRO" == "OPENSUSE" ] ; then
+ 	if [ "$SUDO_USER" != "" ] ; then
+ 		groupmod -A `env | grep SUDO_USER | cut -f2 -d=` bumblebee
+ 	fi
+ fi
+ grep -Ev 'bumblebee' /etc/sudoers > /etc/sudoers.optiorig
+ mv /etc/sudoers.optiorig /etc/sudoers
+-echo "%bumblebee      ALL=(ALL:ALL) NOPASSWD: /etc/init.d/bumblebee" >> /etc/sudoers
+ chmod 0440 /etc/sudoers
+ 
+ #

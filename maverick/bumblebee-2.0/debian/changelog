@@ -1,0 +1,72 @@
+bumblebee (2.0.0-10~maverickubuntu3) maverick; urgency=high
+
+  * Fix for issue #434..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Mon, 11 Jul 2011 11:31:57 +0200
+
+bumblebee (2.0.0-10~maverickubuntu2) maverick; urgency=high
+
+  * Fixed Copy-Paste error in message in configuration script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 10 Jul 2011 22:00:22 +0200
+
+bumblebee (2.0.0-10~maverickubuntu1) maverick; urgency=high
+
+  * Fixed missing REPLACEMONITOR in configuration script
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 10 Jul 2011 18:02:10 +0200
+
+bumblebee (2.0.0-10~maverick) maverick; urgency=high
+
+  * Changed Version
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-8~maverick) maverick; urgency=high
+
+  * More fixes for the configuration script.
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-7~maverick) maverick; urgency=low
+
+  * Fixed the Configuration script
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-6~maverick) maverick; urgency=low
+
+  * Added Bash Completion for optirun
+  * Added /etc/bumblebee with version number
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-5~maverick) maverick; urgency=low 
+
+  * Fixed permission for configuration script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-4~maverick) maverick; urgency=low 
+
+  * Added bumblebee-submitsystem script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-3~maverick) maverick; urgency=high
+
+  * Fixed Post-script typo...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-2~maverick) maverick; urgency=low
+
+  * Fixed file paths...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-1~natty) natty; urgency=high
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200

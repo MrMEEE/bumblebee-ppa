@@ -1,0 +1,72 @@
+bumblebee (2.0.0-10~nattyubuntu3) natty; urgency=high
+
+  * Fix to issue #434..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Mon, 11 Jul 2011 11:29:21 +0200
+
+bumblebee (2.0.0-10~nattyubuntu2) natty; urgency=high
+
+  * Fixed Copy-Paste error in message in configuration script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 10 Jul 2011 22:02:11 +0200
+
+bumblebee (2.0.0-10~nattyubuntu1) natty; urgency=high
+
+  * Fixed missing REPLACEMONITOR in configuration script
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 10 Jul 2011 17:56:19 +0200
+
+bumblebee (2.0.0-10~natty) natty; urgency=high
+
+  * Changed Version.
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-8~natty) natty; urgency=high
+
+  * More fixes for the configuration script.
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-7~natty) natty; urgency=high
+
+  * Fixed the Configuration script
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-6~natty) natty; urgency=high
+
+  * Added Bash Completion for optirun
+  * Added /etc/bumblebee with version number
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-5~natty) natty; urgency=high
+
+  * Fixed permission for configuration script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-4~natty) natty; urgency=high
+
+  * Added bumblebee-submitsystem script..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-3~natty) natty; urgency=high
+
+  * Fixed Post-script typo...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-2~natty) natty; urgency=high
+
+  * Fixed file paths...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+bumblebee (2.0.0-1~natty) natty; urgency=high
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200

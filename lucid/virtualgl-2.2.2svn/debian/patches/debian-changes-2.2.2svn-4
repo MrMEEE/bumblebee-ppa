@@ -1,0 +1,61 @@
+Description: Upstream changes introduced in version 2.2.2svn-4
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ virtualgl (2.2.2svn-4) natty; urgency=high
+ .
+   * Build Depends..
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- virtualgl-2.2.2svn.orig/Makerules.linux
++++ virtualgl-2.2.2svn/Makerules.linux
+@@ -24,12 +24,12 @@ ifeq ($(M32), yes)
+  ARCHFLAG = -m32
+ endif
+ 
+-_DUMMY4 := $(shell ln -fs `$(CXX) $(ARCHFLAG) -print-file-name=libstdc++.a` $(LDIR))
++#_DUMMY4 := $(shell ln -fs `$(CXX) $(ARCHFLAG) -print-file-name=libstdc++.a` $(LDIR))
+ 
+ ifeq ($(DEBUG), yes)
+  OPTFLAG = -O0 -ggdb
+ else
+- OPTFLAG = -O3
++ OPTFLAG = -O3 -fPIC
+ endif
+ 
+ DEFAULTJPEGLIB = libjpeg-turbo
+--- virtualgl-2.2.2svn.orig/Makefile
++++ virtualgl-2.2.2svn/Makefile
+@@ -27,12 +27,12 @@ include Makerules
+ 
+ ifeq ($(USEGLP), yes)
+ test: rr mesademos
+-	chmod u+x mesademos/dotests ;\
+-	exec mesademos/dotests $(EDIR) $(platform) $(subplatform) GLP
++#	chmod u+x mesademos/dotests ;\
++#	exec mesademos/dotests $(EDIR) $(platform) $(subplatform) GLP
+ else
+ test: rr mesademos
+-	chmod u+x mesademos/dotests ;\
+-	exec mesademos/dotests $(EDIR) $(platform) $(subplatform)
++#	chmod u+x mesademos/dotests ;\
++#	exec mesademos/dotests $(EDIR) $(platform) $(subplatform)
+ endif
+ 
+ ##########################################################################

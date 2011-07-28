@@ -1,0 +1,24 @@
+bumblebee-ui (0.9-1~nattyubuntu4) natty; urgency=low
+
+  * Fix for issue #1.. autocreate /home/user/.local/share/applications if it doesn't exist..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 15:58:07 +0200
+
+bumblebee-ui (0.9-1~nattyubuntu3) natty; urgency=low
+
+  * Renamed ecoptirun to optirun in project...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 14:53:05 +0200
+
+bumblebee-ui (0.9-1~nattyubuntu2) natty; urgency=low
+
+  * Moved ecoptirun to the bumblebee project..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 14:20:58 +0200
+
+bumblebee-ui (0.9-1~nattyubuntu1) natty; urgency=high
+
+  * Initial Release..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 12:04:11 +0200
+

@@ -1,0 +1,36 @@
+Description: Upstream changes introduced in version 2.0.0-10~nattyubuntu2
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ bumblebee (2.0.0-10~nattyubuntu2) natty; urgency=high
+ .
+   * Fixed Copy-Paste error in message in configuration script..
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Martin Juhl (MrMEEE) <mj@casalogic.dk>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- bumblebee-2.0.0.orig/install-files/bumblebee-configuration
++++ bumblebee-2.0.0/install-files/bumblebee-configuration
+@@ -47,7 +47,7 @@ fi
+ if [ "$UID" != "$ROOT_UID" ] ; then
+     echo "You don't have sufficient privileges to run this script."
+     echo
+-    echo "Please run the script with: sudo bumblebee-config"
++    echo "Please run the script with: sudo bumblebee-configuration"
+     exit 1
+ fi
+   

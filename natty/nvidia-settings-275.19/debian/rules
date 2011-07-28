@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+#
+# Copyright (C) 2009 Canonical Services Ltd
+# Copyright (C) 2009 Alberto Milone
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+
+PKG_name    := nvidia-settings
+libdir      := /usr/lib
+includedir  := /usr/include
+
+configure/$(PKG_name)::
+	$(MAKE) -C src/libXNVCtrl EXTINCSRC=/usr/include/X11/extensions \
+		CFLAGS="$(CFLAGS) -fPIC"
+	$(MAKE)
+
+
+clean::
+	-$(MAKE) -C src/libXNVCtrl distclean 2>/dev/null
+	-$(MAKE) clean
+	if [ -e src/XF86Config-parser/Makefile ]; then \
+		$(MAKE) -C src/XF86Config-parser clean; \
+	fi
+
+binary-install/$(PKG_name)::
+	$(MAKE) prefix=$(CURDIR)/debian/$(PKG_name)/usr install
+	dh_install -p$(PKG_name) src/libXNVCtrl/libXNVCtrl.a	"$(libdir)"
+	dh_install -p$(PKG_name) src/libXNVCtrl/NVCtrl.h		"$(includedir)/NVCtrl"
+	dh_install -p$(PKG_name) src/libXNVCtrl/NVCtrlLib.h		"$(includedir)/NVCtrl"
+

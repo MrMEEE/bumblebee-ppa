@@ -1,0 +1,66 @@
+virtualgl (2.2.80-1~lucidubuntu4) lucid; urgency=high
+
+  * Bugfix for building on 32-bit...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 01:21:53 +0200
+
+virtualgl (2.2.80-1~lucidubuntu3) lucid; urgency=high
+
+  * Support for 32-bit applications...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 01:12:34 +0200
+
+virtualgl (2.2.80-1~lucidubuntu2) lucid; urgency=low
+
+  * Dependencies for Lucid..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Tue, 26 Jul 2011 12:26:52 +0200
+
+virtualgl (2.2.80-1~lucidubuntu1) lucid; urgency=high
+
+  * New Release..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Mon, 25 Jul 2011 17:21:31 +0200
+
+virtualgl (2.2.2svn-8~lucid) lucid; urgency=low
+
+  * Fixed invalid symlinks.. issue #456
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 21 Jul 2011 16:01:02 +0200
+
+virtualgl (2.2.2svn-6~lucid) lucid; urgency=high
+
+  * Fixed i386 dependencies..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-5~lucid) lucid; urgency=high
+
+  * Build Depends.. libjpeg-turbo32
+  * Fixed installation
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-4) lucid; urgency=high
+
+  * Build Depends..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-3) lucid; urgency=high
+
+  * Build Depends..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-2) lucid; urgency=high
+
+  * Removed broken tests..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-1) lucid; urgency=low
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200

@@ -1,0 +1,14 @@
+Source: virtualgl
+Section: misc
+Priority: extra
+Maintainer: Martin Juhl <mj@casalogic.dk>
+Build-Depends: debhelper (>= 7.0.50~), ia32-libs [amd64], xorg-dev, mesa-common-dev, libglu1-mesa-dev, libjpeg-turbo, libjpeg-turbo32 [amd64], gcc-multilib, lib32z1-dev [amd64], libc6-dev-i386 [amd64], libx11-dev, libxv-dev, libstdc++6-4.5-dev, lib32stdc++6 [amd64], libstdc++6-4.4-dev, libstdc++6, g++-multilib, cmake, lib32gcc1 [amd64], libc6-i386 [amd64], libglu-dev
+Standards-Version: 3.9.1
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/virtualgl.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/virtualgl.git;a=summary
+
+Package: virtualgl
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: VirtualGL, Remote GL execution...

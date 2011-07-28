@@ -1,0 +1,23 @@
+libjpeg-turbo32 (1.1.1-1.1~natty) natty; urgency=high
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo32 (1.1.1-1~oneiric) oneiric; urgency=low
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo32 (1.1.1-1~maverick) maverick; urgency=low
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200
+
+libjpeg-turbo32 (1.1.1-1~lucid) lucid; urgency=low
+
+  * Initial release 
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sun, 19 Jun 2011 00:05:59 +0200

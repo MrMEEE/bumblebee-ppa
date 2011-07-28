@@ -1,0 +1,97 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+ARCH := $(shell uname -m)
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+	# Add here commands to compile the package.
+	# --- end custom part for compiling
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	# Add here commands to clean up after the build process.
+	make clean || true
+	# --- end custom part for cleaning up
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Add here commands to install the package
+	# The DESTDIR Has To Be Exactly  debian/<nameOfPackage>
+	mkdir -p debian/bumblebee-ui/usr/share/bumblebee-ui
+	mkdir -p debian/bumblebee-ui/usr/bin/
+	mkdir -p debian/bumblebee-ui/usr/share/applications/
+	mkdir -p debian/bumblebee-ui/usr/share/icons/
+
+	cp -R app/ debian/bumblebee-ui/usr/share/bumblebee-ui/app
+	cp -R icons/ debian/bumblebee-ui/usr/share/bumblebee-ui/icons
+	cp bumblebee-indicator debian/bumblebee-ui/usr/share/bumblebee-ui/
+
+	#Create bumblebee-app-settings a link to AppSettings.py 
+	ln -s /usr/share/bumblebee-ui/app/AppSettings.py debian/bumblebee-ui/usr/bin/bumblebee-app-settings
+	ln -s /usr/share/bumblebee-ui/bumblebee-indicator debian/bumblebee-ui/usr/bin/bumblebee-indicator
+
+	#Copy desktop files in /usr/share/applications
+	cp bumblebee-app-settings.desktop debian/bumblebee-ui/usr/share/applications/
+	cp bumblebee-indicator.desktop debian/bumblebee-ui/usr/share/applications/
+
+	#Copy or link icons in /usr/share/icons or /usr/share/pixmaps
+	cp icons/bumblebee.svg debian/bumblebee-ui/usr/share/icons/
+
+	#Set the correct right for some files
+	chmod +x debian/bumblebee-ui/usr/share/bumblebee-ui/bumblebee-indicator
+	chmod +x debian/bumblebee-ui/usr/share/bumblebee-ui/app/*
+	chmod +x debian/bumblebee-ui/usr/share/applications/bumblebee-app-settings.desktop
+	chmod +x debian/bumblebee-ui/usr/share/applications/bumblebee-indicator.desktop
+
+	# --- end custom part for installing
+
+# Build architecture-independent files here.
+binary-indep: build install
+	# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+#	dh_installdebconf
+	dh_installdocs
+	dh_installexamples
+	dh_installmenu
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+	dh_installcron
+	dh_installman
+	dh_installinfo
+#	dh_undocumented
+	dh_installchangelogs
+#	dh_link
+#	dh_strip
+#	dh_compress
+#	dh_fixperms
+#	dh_makeshlibs
+	dh_installdeb
+#	dh_perl
+#	dh_shlibdeps
+	dh_gencontrol
+#	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

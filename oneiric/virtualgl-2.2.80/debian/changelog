@@ -1,0 +1,84 @@
+virtualgl (2.2.80-1~oneiricubuntu8) oneiric; urgency=high
+
+  * Disabled dh_shlibdeps..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 15:09:25 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu7) oneiric; urgency=low
+
+  * Trying to fix Oneirc build...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 12:01:46 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu6) oneiric; urgency=low
+
+  * Trying to fix Oneirc build...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 11:44:30 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu5) oneiric; urgency=high
+
+  * Oneiric build dependencies...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 11:28:01 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu4) oneiric; urgency=high
+
+  * Bugfix for building on 32-bit...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 01:25:10 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu3) oneiric; urgency=high
+
+  * Support for 32-bit applications...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 01:15:44 +0200
+
+virtualgl (2.2.80-1~oneiricubuntu1) oneiric; urgency=high
+
+  * New Release..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Mon, 25 Jul 2011 17:21:31 +0200
+
+virtualgl (2.2.2svn-8~oneiric) oneiric; urgency=low
+
+  * Fixed invalid symlinks.. issue #456
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 21 Jul 2011 16:01:02 +0200
+
+virtualgl (2.2.2svn-6~oneiric) oneiric; urgency=high
+
+  * Fixed i386 dependencies..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-5~oneiric) oneiric; urgency=high
+
+  * Build Depends.. libjpeg-turbo32
+  * Fixed installation
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-4) oneiric; urgency=high
+
+  * Build Depends..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-3) oneiric; urgency=high
+
+  * Build Depends..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-2) oneiric; urgency=high
+
+  * Removed broken tests..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200
+
+virtualgl (2.2.2svn-1) oneiric; urgency=low
+
+  * Initial release
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 18 Jun 2011 22:43:11 +0200

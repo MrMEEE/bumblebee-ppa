@@ -1,0 +1,26 @@
+Source: nvidia-settings
+Section: contrib/x11
+Priority: optional
+XSBC-Original-Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+Uploaders: Randall Donald <rdonald@debian.org>
+Build-Depends: debhelper (>= 4.0.0), m4, libgtk2.0-dev, libxext-dev, xutils-dev, libxrandr-dev,
+ libgl1-mesa-dev | libgl-dev, libxxf86vm-dev, libxv-dev, cdbs
+Standards-Version: 3.8.0
+Vcs-Git: git://github.com/tseliot/nvidia-settings.git
+Vcs-Browser: http://github.com/tseliot/nvidia-settings
+
+Package: nvidia-settings
+Architecture: i386 amd64 lpia
+Depends: screen-resolution-extra (>= 0.12), ${shlibs:Depends}
+Conflicts: libxnvctrl-dev
+Replaces: libxnvctrl-dev
+Description:  Tool of configuring the NVIDIA graphics driver
+ The nvidia-settings utility is a tool for configuring the NVIDIA
+ Linux graphics driver.  It operates by communicating with the NVIDIA
+ X driver, querying and updating state as appropriate.  This
+ communication is done with the NV-CONTROL X extension.
+ .
+ Values such as brightness and gamma, XVideo attributes, temperature,
+ and OpenGL settings can be queried and configured via nvidia-settings.
+

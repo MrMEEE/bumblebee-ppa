@@ -1,0 +1,24 @@
+bumblebee-ui (0.9-1~oneiricubuntu4) oneiric; urgency=low
+
+  * Fix for issue #1.. autocreate /home/user/.local/share/applications if it doesn't exist..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 15:58:42 +0200
+
+bumblebee-ui (0.9-1~oneiricubuntu3) oneiric; urgency=low
+
+  * Renamed ecoptirun to optirun in project...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 14:53:31 +0200
+
+bumblebee-ui (0.9-1~oneiricubuntu2) oneiric; urgency=low
+
+  * Moved ecoptirun to the bumblebee project..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 28 Jul 2011 14:21:36 +0200
+
+bumblebee-ui (0.9-1~oneiricubuntu1) oneiric; urgency=high
+
+  * Initial Release..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Wed, 27 Jul 2011 12:04:11 +0200
+

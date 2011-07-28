@@ -1,0 +1,17 @@
+dh-modaliases (0.8.0ubuntu3~maverick) maverick; urgency=high
+
+  * Maverick build
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Thu, 23 Jun 2011 22:43:11 +0200
+
+dh-modaliases (0.8.0ubuntu3~lucid2) lucid; urgency=low
+
+  * Import
+
+ -- falkTX <falktx@gmail.com>  Mon, 09 May 2011 17:28:03 +0100
+
+dh-modaliases (0.8.0ubuntu3~lucid1) lucid; urgency=low
+
+  * Initial backport to Lucid. Picked from jockey_0.8-0ubuntu3.
+
+ -- Aron Xu <happyaron.xu@gmail.com>  Thu, 20 Jan 2011 12:29:39 +0800
