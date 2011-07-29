@@ -1,3 +1,21 @@
+bumblebee (2.2.0-1~maverickubuntu5) maverick; urgency=low
+
+  * Based on git-changes v. 1.7.4..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 17:28:53 +0200
+
+bumblebee (2.2.0-1~maverickubuntu4) maverick; urgency=low
+
+  * Based on git-changes v. 1.7.3..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 17:11:12 +0200
+
+bumblebee (2.2.0-1~maverickubuntu3) maverick; urgency=low
+
+  * Based on git-changes v. 1.7.2..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 16:59:42 +0200
+
 bumblebee (2.2.0-1~maverickubuntu2) maverick; urgency=low
 
   * Based on git-changes v. 1.7.1..

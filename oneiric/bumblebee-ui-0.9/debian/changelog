@@ -1,3 +1,9 @@
+bumblebee-ui (0.9-1~oneiricubuntu5) oneiric; urgency=low
+
+  * Fix for issue #2.. Use configuration from /etc/default/bumblebee
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 00:57:03 +0200
+
 bumblebee-ui (0.9-1~oneiricubuntu4) oneiric; urgency=low
 
   * Fix for issue #1.. autocreate /home/user/.local/share/applications if it doesn't exist..
