@@ -1,3 +1,9 @@
+bumblebee-ui (0.9-1~maverickubuntu6) maverick; urgency=low
+
+  * Support for showing icons in KDE...
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 30 Jul 2011 17:46:53 +0200
+
 bumblebee-ui (0.9-1~maverickubuntu5) maverick; urgency=low
 
   * Fix for issue #2.. Use configuration from /etc/default/bumblebee

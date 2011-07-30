@@ -1,3 +1,21 @@
+bumblebee (2.2.0-1~nattyubuntu9) natty; urgency=low
+
+  * Based on git-changes v. 1.7.9..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 30 Jul 2011 17:55:28 +0200
+
+bumblebee (2.2.0-1~nattyubuntu8) natty; urgency=low
+
+  * Based on git-changes v. 1.7.8..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 30 Jul 2011 00:52:01 +0200
+
+bumblebee (2.2.0-1~nattyubuntu6) natty; urgency=low
+
+  * Based on git-changes v. 1.7.6..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 21:39:33 +0200
+
 bumblebee (2.2.0-1~nattyubuntu5) natty; urgency=low
 
   * Based on git-changes v. 1.7.4..

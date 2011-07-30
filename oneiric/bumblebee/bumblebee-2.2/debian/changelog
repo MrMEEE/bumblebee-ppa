@@ -1,3 +1,21 @@
+bumblebee (2.2.0-1~oneiricubuntu9) oneiric; urgency=low
+
+  * Based on git-changes v. 1.7.9..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 30 Jul 2011 17:56:10 +0200
+
+bumblebee (2.2.0-1~oneiricubuntu8) oneiric; urgency=low
+
+  * Based on git-changes v. 1.7.8..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Sat, 30 Jul 2011 00:52:46 +0200
+
+bumblebee (2.2.0-1~oneiricubuntu6) oneiric; urgency=low
+
+  * Based on git-changes v. 1.7.6..
+
+ -- Martin Juhl (MrMEEE) <mj@casalogic.dk>  Fri, 29 Jul 2011 21:40:28 +0200
+
 bumblebee (2.2.0-1~oneiricubuntu5) oneiric; urgency=low
 
   * Based on git-changes v. 1.7.4..
