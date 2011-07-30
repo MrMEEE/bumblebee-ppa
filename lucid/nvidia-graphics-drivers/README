@@ -1,0 +1,10 @@
+If a file has a .in equivalent, do not modify the generated files directly.
+Instead, modify the .in files and use the below commands to generate the
+regular files:
+
+    cd nvidia-graphics-drivers-VERSION
+    make -f debian/rules regen-from-templates
+
+Multiarch support is available since Natty, but is actually implemented on
+oneiric. Do not try to implement it on Natty and before, it'll break Intel
+GL. (https://github.com/MrMEEE/bumblebee/issues/493)

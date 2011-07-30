@@ -1,0 +1,8 @@
+Q: What is dh-modaliases used for?
+A: dh-modaliases provides the dh_modaliases program which is used in newer
+   Ubuntus to help Jockey find the right package for a given PCI alias.
+   nvidia-graphics-driver <= 280.04-0~maverickubuntu2 was based on
+   the package provided by oneiric, but in order not to change behavior in
+   older releases, newer versions of nvidia-graphics-driver in Maverick use
+   supplies the modaliases in a separate package: nvidia-current-modaliases.
+   So, it's not used anymore, but for historical reasons it remains here.
