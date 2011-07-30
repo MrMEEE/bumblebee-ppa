@@ -6,6 +6,14 @@
 # This file on the Mandriva nvidia packages, on Ubuntu's previous
 # nvidia packaging scripts and on Ubuntu's fglrx scripts.
 
+############# HOW TO ENABLE A DRIVER ####################
+
+#- Run "update-alternatives --set gl_conf $(ld_so_conf_path)" as root.
+#- Run "ldconfig" as root.
+
+
+#########################################################
+
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
@@ -19,15 +27,11 @@ INPUTABI = $(shell cat /usr/share/xserver-xorg/inputabiver 2>/dev/null)
 VIDDRIVER_PROVIDES = xserver-xorg-video-$(VIDEOABI), xorg-driver-video
 INPDRIVER_PROVIDES = xserver-xorg-input-$(INPUTABI), xorg-driver-input
 
-DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
-# If the host is i386 set OTHER_ARCH to x86_64 and vice versa
-OTHER_ARCH := $(shell (echo "$(DEB_HOST_MULTIARCH)" | grep i386 >/dev/null) && \
-		echo "$(DEB_HOST_MULTIARCH)" | sed s/i386/x86_64/ || \
-		echo "$(DEB_HOST_MULTIARCH)" | sed s/x86_64/i386/)
 
 # Package names
 PKG_driver           := nvidia-current
 PKG_driver_dev       := $(PKG_driver)-dev
+PKG_modalias         := $(PKG_driver)-modaliases
 PKG_version          := $(shell dpkg-parsechangelog | awk -F' ' '/^Version:/ {print $$2}' | awk -F- '{print $$1}')
 PKG_source           := $(shell dpkg-parsechangelog | sed -n 's/^Source: //p')
 PKG_module           := $(PKG_driver)
@@ -72,10 +76,7 @@ PKG_deskdir          := $(PKG_datadir)
 PKG_configdir        := $(PKG_libdir)
 ld_so_conf_dir       := $(PKG_configdir)
 ld_so_conf_file      := ld.so.conf
-alt_ld_so_conf_file  := alt_ld.so.conf
 ld_so_conf_path      := $(ld_so_conf_dir)/$(ld_so_conf_file)
-alt_ld_so_conf_path  := $(ld_so_conf_dir)/$(alt_ld_so_conf_file)
-
 mandir               := /usr/share/man/man1
 PKG_bugdir           := /usr/share/bug/$(PKG_driver)
 autostartdir         := /etc/xdg/autostart
@@ -90,7 +91,6 @@ vdpaudir             := $(libdir)/vdpau
 tlsdir               := $(libdir)/tls
 vdpaudir32           := $(libdir32)/vdpau
 tlsdir32             := $(libdir32)/tls
-grub_blacklistdir    := /usr/share/grub-gfxpayload-lists/blacklist
 
 # This is a hack to make sure that
 # the blacklist file is available
@@ -150,7 +150,6 @@ regen-from-templates:
 			-e "s|#SYSCONFDIR#|$(sysconfdir)|g" \
 			-e "s|#MANDIR#|$(mandir)|g" \
 			-e "s|#LDSOCONF#|$(ld_so_conf_path)|g" \
-			-e "s|#ALTLDSOCONF#|$(alt_ld_so_conf_path)|g" \
 			-e "s|#ALTPRIORITY#|$(alt_priority)|g" \
 			-e "s|#AUTOSTARTDIR#|$(autostartdir)|g" \
 			-e "s|#AUTOSTARTFILE#|$(autostartfile)|g" \
@@ -180,9 +179,6 @@ regen-from-templates:
 			-e "s|#PKGTLSDIR#|$(PKG_tlsdir)|g" \
 			-e "s|#PKGTLSDIR32#|$(PKG_tlsdir32)|g" \
 			-e "s|#PKGLIBCONFDIR#|$(PKG_libconfdir)|g" \
-			-e "s|#GRUBBLKLISTDIR#|$(grub_blacklistdir)|g" \
-			-e "s|#DEB_HOST_MULTIARCH#|$(DEB_HOST_MULTIARCH)|g" \
-			-e "s|#OTHER_ARCH#|$(OTHER_ARCH)|g" \
 			debian/$$i.in > debian/$$i;      \
 	done
 ifeq ($(DEB_BUILD_ARCH),amd64)
@@ -264,9 +260,7 @@ endif
 		nvidia_current $(PKG_driver) \
 		$(dirname)/README.txt \
 		$(dirname)/kernel/nv-kernel.o \
-		> $(CURDIR)/debian/$(PKG_driver).modaliases
-	dh_modaliases
-	rm $(CURDIR)/debian/$(PKG_driver).modaliases
+		> $(CURDIR)/debian/$(PKG_driver)-modaliases/usr/share/jockey/modaliases/$(PKG_driver)
 
 	# Configuration stuff
 
@@ -276,8 +270,6 @@ endif
 ifeq ($(DEB_BUILD_ARCH),amd64)
 	echo "$(PKG_libdir32)" >>	$(CURDIR)/debian/$(PKG_driver)$(ld_so_conf_path)
 endif
-	# empty ld.so.conf for the fake multi-arch alternative
-	$(shell touch "$(CURDIR)/debian/$(PKG_driver)$(alt_ld_so_conf_path)")
 
 	# Blacklist any other driver that udev may want to load instead of $(PKG_module)
 	printf "blacklist nouveau\nblacklist lbm-nouveau\nblacklist nvidia-173\nblacklist nvidia-96\n" > $(CURDIR)/debian/$(PKG_driver)$(PKG_libconfdir)/modprobe.conf

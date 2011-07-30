@@ -1,6 +1,4 @@
 debian/nvidia-current.override                 usr/share/lintian/overrides
-#Blacklist some card ids from GRUB gfxpayload=keep
-debian/nvidia-current.grub-gfxpayload          /usr/share/nvidia-current
 
 NVIDIA-Linux-x86_64-280.04-no-compat32/nvidia_drv.so /usr/lib/nvidia-current/xorg
 NVIDIA-Linux-x86_64-280.04-no-compat32/libglx.so.280.04 /usr/lib/nvidia-current/xorg

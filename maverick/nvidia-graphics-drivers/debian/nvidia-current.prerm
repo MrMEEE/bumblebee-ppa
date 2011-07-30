@@ -22,19 +22,13 @@ case "$1" in
 	remove)
 		remove_dkms_module 
 	
-		update-alternatives --remove x86_64-linux-gnu_gl_conf /usr/lib/nvidia-current/ld.so.conf
-		update-alternatives --remove i386-linux-gnu_gl_conf /usr/lib/nvidia-current/ld.so.conf
+		update-alternatives --remove gl_conf /usr/lib/nvidia-current/ld.so.conf
 
 		# Trigger gmenu so as to update the gnome menu
 		dpkg-trigger --by-package=$PACKAGE_NAME gmenucache || true
 
 		# explicit ldconfig due to alternatives
 		ldconfig
-
-		# Update the grub gfxpayload blacklist
-		if which update-grub-gfxpayload >/dev/null 2>&1; then
-		    update-grub-gfxpayload
-		fi
 	;;
 esac
 

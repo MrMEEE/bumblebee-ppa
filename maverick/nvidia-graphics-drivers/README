@@ -8,3 +8,18 @@ regular files:
 Multiarch support is available since Natty, but is actually implemented on
 oneiric. Do not try to implement it on Natty and before, it'll break Intel
 GL. (https://github.com/MrMEEE/bumblebee/issues/493)
+
+Maverick-specific notes:
+dh-modaliases is provided by the jockey source package in Natty an newer. Older
+releases do not have the dh_modaliases program, therefore we've two choices:
+
+ 1. Provide dh-modaliases
+ 2. Use the old behavior
+(1) could break other packages which supply a dh-modaliases program too, so
+let's use the "why break something that aint broken" rule and use the old
+behavior.
+
+nvidia-current-modaliases was replaced by dh-modaliases which searches the
+control files for aliases in Natty, see the below commit link:
+http://bazaar.launchpad.net/~ubuntu-branches/ubuntu/natty/nvidia-graphics-drivers/natty/revision/31#debian/control.in
+
